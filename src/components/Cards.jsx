@@ -8,7 +8,7 @@ export default function Cards( {characters, onClose} ) {
     <Card
       key={key.id}
       id={key.id}
-      name={key.name}
+      name={key.name}g
       status={key.status}
       species={key.species}
       gender={key.gender}
