@@ -10,7 +10,7 @@ export default function Detail() {
   useEffect(() => {
     axios(`https://rickandmortyapi.com/api/character/${id}`).then(
       ({ data }) => {
-        console.log(data);
+      
         if (data.name) setCharacter(data);
         else alert("There is no character with that id");
         setLoading(false);
