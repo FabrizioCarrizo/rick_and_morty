@@ -1,6 +1,7 @@
 import "./App.css";
 import Cards from "./components/Cards.jsx";
 import Nav from "./components/Nav";
+import Favorites from "./components/Favorites";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Routes, Route, useNavigate } from "react-router-dom";
@@ -8,6 +9,8 @@ import About from "./components/About";
 import Detail from "./components/Detail";
 import NotFound from "./components/NotFound";
 import Form from "./components/Form";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -62,25 +65,46 @@ function App() {
   useEffect(() => {
     !access && navigate("/");
   }, [access, navigate]);
+
+  const handleFav = () => {
+      console.log('Fav button pressed')
+  };
+
   return (
-    <div className="App">
-      {access ? (
-        <Nav onSearch={onSearch} randomChar={randomChar} logout={logout}></Nav>
-      ) : null}
+    <Provider store={store}>
+      <div className="App">
+        {access ? (
+          <Nav
+            onSearch={onSearch}
+            randomChar={randomChar}
+            logout={logout}
+          ></Nav>
+        ) : null}
 
-      <Routes>
-        <Route path={"/"} element={<Form login={login}></Form>}></Route>
-        <Route
-          path="/home"
-          element={<Cards characters={characters} onClose={onClose}></Cards>}
-        ></Route>
+        <Routes>
+          <Route path={"/"} element={<Form login={login}></Form>}></Route>
+          <Route
+            path="/home"
+            element={
+              <Cards
+              className={'Cards'}
+                characters={characters}
+                onClose={onClose}
+                handleFav={handleFav}
+              ></Cards>
+            }
+          ></Route>
 
-        <Route path="/about" element={<About></About>}></Route>
-        <Route path="/detail/:id" element={<Detail></Detail>}></Route>
-        <Route path="*" element={<NotFound></NotFound>}></Route>
-      </Routes>
-    </div>
+          <Route path="/about" element={<About></About>}></Route>
+          <Route path="/detail/:id" element={<Detail></Detail>}></Route>
+          <Route path="/favorites" element={<Favorites></Favorites>}></Route>
+
+          <Route path="*" element={<NotFound></NotFound>}></Route>
+        </Routes>
+      </div>
+    </Provider>
   );
 }
 
 export default App;
+
