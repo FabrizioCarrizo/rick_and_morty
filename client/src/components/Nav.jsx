@@ -1,6 +1,4 @@
 import SearchBar from "./SearchBar";
-import "../App.css";
-
 import { Link } from "react-router-dom";
 
 export default function Nav({ onSearch, randomChar, logout }) {

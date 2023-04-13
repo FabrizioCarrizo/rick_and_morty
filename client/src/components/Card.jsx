@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { addFav, removeFav } from "../redux/actions";
-import "../App.css";
+
 
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -20,6 +20,7 @@ const mapStatetoProps = (state) => {
 
 function Card({
   name,
+ 
   id,
   status,
   species,
@@ -69,7 +70,9 @@ function Card({
       <h2>{species}</h2>
       <h2>{gender}</h2>
       <h2>{origin}</h2>
+      <img src="" alt="" />
       <img className="CardImg" src={image} alt="" />
+
       </div>
      
     </div>
