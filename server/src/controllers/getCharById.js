@@ -1,36 +1,41 @@
-const { rejects } = require("assert");
 const axios = require("axios");
 let http = require("http");
 
-const getCharById = (res, id) => {
-  return new Promise(()=>{
+const URL = "https://rickandmortyapi.com/api/character/";
+
+const getCharById = (req, res) => {
+  const {id}= req.params;
+  return new Promise(() => {
     let character = {};
     axios
-      .get(`https://rickandmortyapi.com/api/character/${id}`)
+      .get(`${URL}${id}`)
       .then((data) => {
-        character = {
-          id: id,
-          name: data.data.name,
-          gender: data.data.gender,
-          species: data.data.species,
-          origin: data.data.origin.name,
-          image: data.data.image,
-          status: data.data.status,
-        }
-        res.writeHead(200, {
-          "content-type": "application/json",
-        });
+        // character = {
+        //   id: req.query.id,
+        //   name: data.data.name,
+        //   gender: data.data.gender,
+        //   species: data.data.species,
+        //   origin: data.data.origin.name,
+        //   image: data.data.image,
+        //   status: data.data.status,
+        // }
+        res
+          .status(200)
+          .send({
+            id: req.query.id,
+            name: data.data.name,
+            gender: data.data.gender,
+            species: data.data.species,
+            origin: data.data.origin.name,
+            image: data.data.image,
+            status: data.data.status,
+          });
         res.end(JSON.stringify(character));
-        
-  
       })
       .catch((error) => {
-        res.writeHead(500, { "content-type": "text/plain" });
-        res.end( error.message);
+        res.status(404).send("Not found");
       });
-
-  })
- 
+  });
 };
 
 module.exports = {
