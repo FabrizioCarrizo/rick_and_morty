@@ -8,7 +8,7 @@ export default function Cards( {characters, onClose, handleFav} ) {
   }
 
   
-
+console.log('characters in CARDS-->',characters)
   return characters.map((key) => (
     <Card 
       key={key.id}

@@ -37,9 +37,19 @@ function App() {
   };
 
   const onClose = (id) => {
-    setCharacters(
-      characters.filter((character) => character.id !== parseInt(id))
-    );
+    if(characters){
+      console.log(id)
+      setCharacters(
+        characters.filter((character) => {
+          console.log(character.name);
+
+          return character.id !== Number(id);
+        
+        })
+      );
+      console.log('this are characters--->',characters)
+    }
+   
   };
 
   const randomChar = () => {
