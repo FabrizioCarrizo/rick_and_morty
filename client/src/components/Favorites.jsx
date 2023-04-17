@@ -2,28 +2,47 @@ import { connect } from "react-redux";
 import { removeFav } from "../redux/actions";
 import Card from "./Card";
 
+
 const mapStateToProps = (state) => {
   return {
-    myFavorites: state.myFavorites,
+    myFavorites: state.myFavorites, 
   };
 };
 
-const mapDispatchToProps=(dispatch, ownProps)=>{
-    return {
-            removeFavorite: dispatch(removeFav(ownProps.id))
-    }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeFavorite: (id) => dispatch(removeFav(id))
+  }
 }
 
+
+
+
 const Favorites = ({ myFavorites, removeFavorite }) => {
-  
   return (
     <div>
-      {myFavorites.map((fav) => {
-        
-        return <Card key={fav.id} {...fav}></Card>;
-      })}
+      {myFavorites ? (
+        myFavorites.map((fav) => {
+          return (
+            <Card
+              key={fav.id}
+              {...fav}
+              removeFavorite={() => removeFavorite(fav.id)}
+            ></Card>
+          );
+        })
+      ) : (
+        <div>No favorites found</div>
+      )}
     </div>
   );
 };
 
+
+
+
+
 export default connect(mapStateToProps, mapDispatchToProps)(Favorites);
+
+
+// Edit favorites pages and card detail on front

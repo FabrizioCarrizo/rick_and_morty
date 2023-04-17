@@ -1,17 +1,47 @@
-let myFavorites=[];
+let myFavorites = [];
 
-const postFav=(req,res)=>{
-    myFavorites=[...myFavorites, req.body];
-    res.json(myFavorites);
-}
+const postFav = (req, res) => {
 
-const deleteFav=(req,res)=>{
-    myFavorites.filter((character)=>{
-       myFavorites=[ ...myFavorites,character.id!==req.params.id];
+  try{
+    let newFav = req.body;
+    let existFav=myFavorites.find((fav)=>{
+      return fav.id=== newFav.id
     });
-    res.json(myFavorites);
-}
+    if(existFav) {
+      myFavorites = myFavorites.filter(character => Number(newFav.id) !== character.id);
+      res.status(200).json(myFavorites);
 
-module.exports={
-    postFav, deleteFav
-}
+
+    }
+    else {
+      myFavorites.push(newFav);
+      res.status(200).json(myFavorites);
+    }
+  
+  
+  } catch (error){
+    res.status(200).send('Alredy in favorites!');
+
+  }
+ 
+};
+
+
+const deleteFav = (req, res) => {
+  const { id } = req.params;
+
+  myFavorites = myFavorites.filter(character => Number(id) !== character.id);
+  res.status(200).json(myFavorites);
+
+};
+
+
+const getFav=(req, res)=>{
+  res.status(200).json(myFavorites);
+  }
+module.exports = {
+
+  postFav,
+  deleteFav,
+  getFav
+};

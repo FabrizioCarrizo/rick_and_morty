@@ -150,7 +150,7 @@ Dirígete al archivo **`index.js`** en el que tienes tu servidor. Aquí deberás
       );
       res.header(
          'Access-Control-Allow-Methods',
-         'GET, POST, OPTIONS, PUT, DELETE'
+         'GET, POST, OPTION```S, PUT, DELETE'
       );
       next();
    });

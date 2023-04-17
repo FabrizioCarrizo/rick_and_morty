@@ -19,9 +19,6 @@ function App() {
 
   const navigate = useNavigate();
 
-  const EMAIL = "fabriziocarrizo7@gmail.com";
-  const PASSWORD = "henry36b";
-
   const findExisting = (id) => {
     if (characters.find((character) => character.id === parseInt(id)))
       return true;
@@ -51,12 +48,15 @@ function App() {
     else return onSearch(random);
   };
 
-  const login = (userData) => {
-    if (userData.email === EMAIL && userData.password === PASSWORD) {
-      setAccess(true);
-      navigate("/home");
-    } else alert("Wrong email or password");
-  };
+  function login(userData) {
+    const { email, password } = userData;
+    const URL = 'http://localhost:3001/rickandmorty/login/';
+    axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+       const { access } = data;
+       setAccess(data);
+       access && navigate('/home');
+    });
+ }
 
   const logout = () => {
     setAccess(false);

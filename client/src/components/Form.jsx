@@ -12,7 +12,7 @@ export default function Form({login}) {
     email: "",
     password: "",
   });
-  console.log("length in Form:", Object.keys(errors).length);
+ 
 
   const handleChange = (e) => {
     setUserData(
