@@ -47,7 +47,7 @@ function App() {
         
         })
       );
-      console.log('this are characters--->',characters)
+     
     }
    
   };
@@ -61,11 +61,17 @@ function App() {
   function login(userData) {
     const { email, password } = userData;
     const URL = 'http://localhost:3001/rickandmorty/login/';
+    try{
     axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
-       const { access } = data;
-       setAccess(data);
-       access && navigate('/home');
-    });
+      const { access } = data;
+      setAccess(data);
+      access && navigate('/home');
+
+    }) } catch (error) {
+        console.log(error)
+      }
+    
+  ;
  }
 
   const logout = () => {
@@ -107,7 +113,7 @@ function App() {
 
           <Route path="/about" element={<About></About>}></Route>
           <Route path="/detail/:id" element={<Detail></Detail>}></Route>
-          <Route path="/favorites" element={<Favorites></Favorites>}></Route>
+          <Route path="/favorites" element={<Favorites onClose={onClose}></Favorites>}></Route>
 
           <Route path="*" element={<NotFound></NotFound>}></Route>
         </Routes>

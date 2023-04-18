@@ -81,12 +81,13 @@
  
  /* Header */
  
- .header {
+ .Nav {
    align-items: center;
    background: linear-gradient(to bottom, #fbc300, #c98a00);
    background-image: url('../src/assets/cover.jpg');
    background-image: url('../src/assets/cover.jpg');
-
+   max-width: 100%;
+   box-sizing: border-box;
    background: linear-gradient(to left top, blue, red);
 
 
@@ -96,8 +97,9 @@
    color: #fff;
    display: flex;
    flex-direction: column;
+   flex-wrap: wrap;
    justify-content: center;
-   min-height: 368px;
+   max-height: 5rem;
    padding: 0.5rem 1rem;
    text-align: center;
  }
@@ -118,7 +120,7 @@
  
  /* Containers */
  
- .container {
+ .Card {
    display: flex;
    margin: 0 auto;
    max-width: 1300px;

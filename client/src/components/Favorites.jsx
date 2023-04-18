@@ -18,16 +18,17 @@ const mapDispatchToProps = (dispatch) => {
 
 
 
-const Favorites = ({ myFavorites, removeFavorite }) => {
+const Favorites = ({ myFavorites, removeFavorite , onClose}) => {
   return (
     <div>
       {myFavorites ? (
-        myFavorites.map((fav) => {
+        myFavorites.map((fav, index) => {
           return (
             <Card
-              key={fav.id}
+              key={index}
+              onClose={onClose}
               {...fav}
-              removeFavorite={() => removeFavorite(fav.id)}
+              // removeFavorite={() => removeFavorite(fav.id)}
             ></Card>
           );
         })

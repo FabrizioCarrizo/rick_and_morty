@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
 const mapStatetoProps = (state) => {
   return {
-    myFavorites: [state.myFavorites],
+    myFavorites: state.myFavorites,
   };
 };
 
@@ -45,12 +45,12 @@ function Card({
     }
   };
   useEffect(() => {
-    
+    console.log('my favorites--->',myFavorites)
     myFavorites.find((fav) => {
       if (fav.id === id) {
         setIsFav(true);
       }
-    });
+    }, [myFavorites]);
    
   }, [myFavorites]);
 

@@ -8,7 +8,7 @@ const postFav = (req, res) => {
       return fav.id=== newFav.id
     });
     if(existFav) {
-      myFavorites = myFavorites.filter(character => Number(newFav.id) !== character.id);
+      // myFavorites = myFavorites.filter(character => Number(newFav.id) !== character.id);
       res.status(200).json(myFavorites);
 
 
@@ -20,7 +20,7 @@ const postFav = (req, res) => {
   
   
   } catch (error){
-    res.status(200).send('Alredy in favorites!');
+    res.status(500).send('Alredy in favorites!');
 
   }
  

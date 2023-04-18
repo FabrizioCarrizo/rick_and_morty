@@ -8,8 +8,10 @@ const getCharById = (req, res) => {
       let character = ({ id, name, species, image, gender, status } =
         response.data);
         character.image?  
-      res.status(200).json(character) : null;
+      res.status(200).json(character) : res.status(500).json('error');
 
+    }).then((error)=>{
+      res.status(500).send(error)
     })
   });
 };
