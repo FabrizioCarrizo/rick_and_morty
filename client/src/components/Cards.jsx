@@ -1,16 +1,17 @@
 import Card from "./Card";
 
-
-
-export default function Cards( {characters, onClose, handleFav} ) {
+export default function Cards({ characters, onClose, handleFav }) {
   if (!characters || characters.length === 0) {
-    return <div className="Message"><h3>Please use the search bar to find a character...</h3></div>;
+    return (
+      <div className="Message">
+        <h3>Please use the search bar to find a character...</h3>
+      </div>
+    );
   }
 
-  
-console.log('characters in CARDS-->',characters)
+  console.log("characters in CARDS-->", characters);
   return characters.map((key) => (
-    <Card 
+    <Card
       key={key.id}
       id={key.id}
       name={key.name}

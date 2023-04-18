@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => {
 
 
 
-const Favorites = ({ myFavorites, removeFavorite , onClose}) => {
+const Favorites = ({ myFavorites , onClose}) => {
   return (
     <div>
       {myFavorites ? (
@@ -28,7 +28,7 @@ const Favorites = ({ myFavorites, removeFavorite , onClose}) => {
               key={index}
               onClose={onClose}
               {...fav}
-              // removeFavorite={() => removeFavorite(fav.id)}
+              
             ></Card>
           );
         })

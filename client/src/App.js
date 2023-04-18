@@ -37,19 +37,13 @@ function App() {
   };
 
   const onClose = (id) => {
-    if(characters){
-      console.log(id)
+    if (characters) {
       setCharacters(
         characters.filter((character) => {
-          console.log(character.name);
-
           return character.id !== Number(id);
-        
         })
       );
-     
     }
-   
   };
 
   const randomChar = () => {
@@ -60,19 +54,17 @@ function App() {
 
   function login(userData) {
     const { email, password } = userData;
-    const URL = 'http://localhost:3001/rickandmorty/login/';
-    try{
-    axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
-      const { access } = data;
-      setAccess(data);
-      access && navigate('/home');
-
-    }) } catch (error) {
-        console.log(error)
-      }
-    
-  ;
- }
+    const URL = "http://localhost:3001/rickandmorty/login/";
+    try {
+      axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+        const { access } = data;
+        setAccess(data);
+        access && navigate("/home");
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const logout = () => {
     setAccess(false);
@@ -83,12 +75,12 @@ function App() {
   }, [access, navigate]);
 
   const handleFav = () => {
-      console.log('Fav button pressed')
+    console.log("Fav button pressed");
   };
 
   return (
     <Provider store={store}>
-      <div className="App">
+      <div className="app">
         {access ? (
           <Nav
             onSearch={onSearch}
@@ -96,31 +88,34 @@ function App() {
             logout={logout}
           ></Nav>
         ) : null}
+        <div className="cards">
+          <Routes>
+            <Route path={"/"} element={<Form login={login}></Form>}></Route>
+            <Route
+              path="/home"
+              element={
+                <Cards
+                  className={"cards"}
+                  characters={characters}
+                  onClose={onClose}
+                  handleFav={handleFav}
+                ></Cards>
+              }
+            ></Route>
 
-        <Routes>
-          <Route path={"/"} element={<Form login={login}></Form>}></Route>
-          <Route
-            path="/home"
-            element={
-              <Cards
-              className={'Cards'}
-                characters={characters}
-                onClose={onClose}
-                handleFav={handleFav}
-              ></Cards>
-            }
-          ></Route>
+            <Route path="/about" element={<About></About>}></Route>
+            <Route path="/detail/:id" element={<Detail></Detail>}></Route>
+            <Route
+              path="/favorites"
+              element={<Favorites onClose={onClose}></Favorites>}
+            ></Route>
 
-          <Route path="/about" element={<About></About>}></Route>
-          <Route path="/detail/:id" element={<Detail></Detail>}></Route>
-          <Route path="/favorites" element={<Favorites onClose={onClose}></Favorites>}></Route>
-
-          <Route path="*" element={<NotFound></NotFound>}></Route>
-        </Routes>
+            <Route path="*" element={<NotFound></NotFound>}></Route>
+          </Routes>
+        </div>
       </div>
     </Provider>
   );
 }
 
 export default App;
-
