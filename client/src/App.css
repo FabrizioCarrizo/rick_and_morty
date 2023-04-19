@@ -61,10 +61,11 @@ input[type="password"] {
 }
 
 button {
-  background-color: #fff;
+  background-color: #333;
   border: none;
   border-radius: 3px;
-  color: #333;
+  color: #3f2;
+
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
@@ -191,19 +192,16 @@ h2 {
 .card-inner {
   padding: 20px 0;
 }
-.no-dec{
-   text-decoration: none;
-
+.no-dec {
+  text-decoration: none;
 }
 .name-alive {
   color: #58d68d;
   font-size: xx-large;
 }
-.name-dead{
-   color: #f32;
+.name-dead {
+  color: #f32;
   font-size: xx-large;
-
-
 }
 .button-transparent {
   background-color: transparent;
@@ -238,14 +236,6 @@ h2 {
   position: relative;
 }
 
-.max-height-card {
-  width: 75%;
-  margin: 0 auto;
-  padding: 1rem;
-  height: 92%;
-  cursor: pointer;
-}
-
 .container-main:hover {
   transform: scale(1.02);
   /* cursor: pointer; */
@@ -266,10 +256,68 @@ h2 {
   border-radius: 50%;
 }
 
-em {
-  font-style: normal;
+.detail-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #14141c;
+  padding: 2em;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
+.detail-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #1e1e2b;
+  border-radius: 10px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  width: 600px;
+  max-width: 90%;
+}
+
+.detail-image {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  padding: 2em;
+  margin: 1em;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.detail-content {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.detail-container h2 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: left;
+}
+
+.detail-container p {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #a5a5a5;
+}
+
+.detail-container h3 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #fff;
+  text-align: left;
+}
 @media (min-width: 900px) {
   [data-layout="mobile"] {
     display: none;

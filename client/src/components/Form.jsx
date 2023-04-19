@@ -67,7 +67,7 @@ export default function Form({ login }) {
             </span>
           </div>
         ) : null}
-        <button disabled={Object.keys(errors).length > 0}>Submit</button>
+        <button disabled={Object.keys(errors).length > 0}>Login</button>
       </form>
     </div>
   );

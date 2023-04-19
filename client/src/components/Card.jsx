@@ -54,7 +54,7 @@ function Card({
   }, [myFavorites]);
 
   return (
-    <div className="card container-main animate__animated animate__fadeInUp">
+    <div className="card container-main ">
       <div className="card-inner">
         <button
           onClick={() => {
