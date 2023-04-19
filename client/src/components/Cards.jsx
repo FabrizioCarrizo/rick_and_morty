@@ -3,8 +3,8 @@ import Card from "./Card";
 export default function Cards({ characters, onClose, handleFav }) {
   if (!characters || characters.length === 0) {
     return (
-      <div className="Message">
-        <h3>Please use the search bar to find a character...</h3>
+      <div className="empty-home-msg">
+        <h2 >Please use the search bar to find a character...</h2>
       </div>
     );
   }

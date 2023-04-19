@@ -9,8 +9,8 @@ export default function SearchBar({ onSearch, randomChar }) {
 
   return (
     <div>
-      <input type="search" onChange={(e) => handleChange(e)} value={id} />
-      <button
+      <input type="search" className="search-bar" onChange={(e) => handleChange(e)} value={id} />
+      <button className="button"
         onClick={() => {
           onSearch(id);
           setId("");
@@ -18,7 +18,7 @@ export default function SearchBar({ onSearch, randomChar }) {
       >
         Agregar
       </button>
-      <button onClick={() => randomChar(onSearch)}>Sorprendeme!</button>
+      <button className="button" onClick={() => randomChar(onSearch)}>Sorprendeme!</button>
     </div>
   );
 }

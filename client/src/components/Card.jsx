@@ -54,7 +54,7 @@ function Card({
   }, [myFavorites]);
 
   return (
-    <div className=" card container-main animate__animated animate__fadeInUp">
+    <div className="card container-main animate__animated animate__fadeInUp">
       <div className="">
         <button
           onClick={() => {
@@ -64,19 +64,21 @@ function Card({
         >
           X
         </button>
+        
         {isFav ? (
-          <button
-            className="card-icon-favorite"
+          <button className={'button-transparent icon '}
+            
             onClick={() => handleFavorite()}
           >
-            ❤️
+            <img src="/icons/fav.png
+            " alt="" className="icon" /> 
           </button>
         ) : (
           <button
-            className="card-icon-favorite"
+          className={'button-transparent icon'}
             onClick={() => handleFavorite()}
           >
-            🤍
+            <img src="/icons/no-fav.png" alt="" className="icon" />
           </button>
         )}
         <Link to={`/detail/${id}`}>
