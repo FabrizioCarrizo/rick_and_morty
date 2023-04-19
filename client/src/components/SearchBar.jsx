@@ -9,7 +9,7 @@ export default function SearchBar({ onSearch, randomChar }) {
 
   return (
     <div>
-      <input type="search" className="search-bar" onChange={(e) => handleChange(e)} value={id} />
+      <input type="search" className="search-bar" placeholder="Search by character id..." onChange={(e) => handleChange(e)} value={id} />
       <button className="button"
         onClick={() => {
           onSearch(id);

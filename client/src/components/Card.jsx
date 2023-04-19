@@ -55,41 +55,52 @@ function Card({
 
   return (
     <div className="card container-main animate__animated animate__fadeInUp">
-      <div className="">
+      <div className="card-inner">
         <button
           onClick={() => {
             onClose(id);
             removeFavorite();
           }}
+          className="cancel "
         >
-          X
+          <img
+            src="/icons/cancel.png
+            "
+            alt=""
+            className="icon cancel"
+          />
         </button>
-        
+
         {isFav ? (
-          <button className={'button-transparent icon '}
-            
+          <button
+            className={"button-transparent icon "}
             onClick={() => handleFavorite()}
           >
-            <img src="/icons/fav.png
-            " alt="" className="icon" /> 
+            <img
+              src="/icons/fav.png
+            "
+              alt=""
+              className="icon"
+            />
           </button>
         ) : (
           <button
-          className={'button-transparent icon'}
+            className={"button-transparent icon"}
             onClick={() => handleFavorite()}
           >
             <img src="/icons/no-fav.png" alt="" className="icon" />
           </button>
         )}
-        <Link to={`/detail/${id}`}>
-          <h2>{name}</h2>
+        <Link className="no-dec" to={`/detail/${id}`}>
+          <h2 className={status==='Alive'|| status==='unknown'? 'name-alive': 'name-dead' }>{name}</h2>
         </Link>
+
         <div className="info__status animate__animated animate__zoomIn animate__faster animate__delay-2s">
-          <h2>{status}</h2>
+          <h2>{status==='unknown' ? `Status ${status}` : status}</h2>
         </div>
         <h2>{species}</h2>
         <h2>{gender}</h2>
-        <h2>{origin}</h2>
+        <h2>{origin === "unknown" ? `Origin ${origin}` : origin}</h2>
       </div>
       <div className="image">
         <img className=" img__content " src={image} alt="" />
